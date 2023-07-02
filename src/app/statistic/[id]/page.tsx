@@ -1,8 +1,10 @@
 "use client"
+
 import PokeCard from "@/components/PokeCard";
 import { useEffect, useState } from "react";
 import { api } from "@/services/axios-config";
 import { usePathname } from "next/navigation";
+import pokeAsh from "@/assets/poke-ash.png"
 
 export default function PokeById() {
   const pathname = usePathname()
@@ -11,7 +13,7 @@ export default function PokeById() {
   const [pokeImage, setPokeImage] = useState<string>();
   const [pokeName, setPokeName] = useState<string>();
   const [pokeNumber, setPokeNumber] = useState<number>();
-  const [pokeType, setPokeType] = useState<Array[]>([]);
+  const [pokeType, setPokeType] = useState<[]>([]);
   const [key, setKey] = useState<string>();
 
 
@@ -37,14 +39,25 @@ export default function PokeById() {
   return (
 
     <div className="flex justify-center ">
+      {(pokeImage && pokeName && pokeNumber && pokeType) ?
+        <PokeCard
+          pokeImage={pokeImage}
+          pokeName={pokeName}
+          pokeNumber={pokeNumber}
+          pokeType={pokeType}
+          key={key}
+        />
+        :
+        <div className="animate-pulse">
 
-      <PokeCard
-        pokeImage={pokeImage}
-        pokeName={pokeName}
-        pokeNumber={pokeNumber}
-        pokeType={pokeType}
-        key={key}
-      />
+          <PokeCard
+            pokeImage={pokeAsh}
+            pokeName={"Ash"}
+            pokeNumber={0}
+            pokeType={pokeType}
+            key={key}
+          />
+        </div>}
     </div >
 
   )

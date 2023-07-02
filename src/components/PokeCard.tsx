@@ -1,16 +1,6 @@
+import { ICardProps } from "@/app/types/PokemonProps";
 import Image from "next/image";
 import Link from "next/link";
-
-export interface ICardProps {
-  pokeName: string;
-  pokeImage: string;
-  pokeNumber: number;
-  pokeType: [{
-    type: {
-      name: string
-    }
-  }]
-}
 
 export default function PokeCard({
   pokeName,
@@ -20,11 +10,11 @@ export default function PokeCard({
 }: ICardProps) {
 
 
-  console.log(pokeType.types);
+  // console.log(pokeType.types);
 
-  function typeChecker(types: Array<[]>) {
-    if (types[1]) {
-      return `${types[0].type.name} | ${types[1].type.name}`
+  function typeChecker() {
+    if (pokeType[1]) {
+      return `${pokeType[0].type.name} | ${pokeType[1]?.type.name}`
     }
     return pokeType[0]?.type.name
   }
@@ -47,7 +37,7 @@ export default function PokeCard({
         </div>
         <div>
           {pokeType ?
-            <h2>Tipo: {typeChecker(pokeType)}</h2>
+            <h2>Tipo: {typeChecker()}</h2>
             : <h3>Tipo não encontrado</h3>}
         </div>
       </Link>
