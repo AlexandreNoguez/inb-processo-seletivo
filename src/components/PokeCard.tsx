@@ -29,7 +29,7 @@ export default function PokeCard({
   }
 
   return (
-    <div className=" rounded-lg bg-zinc-200 min-h-[228px] w-44 p-4 flex flex-col text-center items-center justify-center">
+    <div className="border-slate-900 border-2 rounded-lg bg-zinc-200 min-h-[228px] w-44 p-4 flex flex-col text-center items-center justify-center">
       <Link href={`/statistic/${pokeName}`}>
 
         <div className="flex flex-col items-center justify-center">

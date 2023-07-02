@@ -1,11 +1,10 @@
-import { Dispatch, SetStateAction } from "react";
+import { SetStateAction } from "react";
 import { api } from "./axios-config";
 import { PokemonProps } from "@/app/types/PokemonProps";
 
 const getAllPokemons = async (setPokemons: { (value: SetStateAction<PokemonProps[]>): void; (arg0: (prevData: any) => any[]): void; }) => {
   let endPoints = [];
-
-  for (let i = 1; endPoints.length < 30; i++) {
+  for (let i = 1; endPoints.length < 50; i++) {
     endPoints.push(`/pokemon/${i}`)
   }
 

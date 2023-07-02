@@ -40,7 +40,7 @@ export default function PokeById() {
 
   return (
 
-    <div className="flex justify-center ">
+    <div className="flex justify-center flex-wrap gap-2 mt-2 mb-2">
       {(pokeImage && pokeName && pokeNumber && pokeType) ?
         <PokeCard
           pokeImage={pokeImage}

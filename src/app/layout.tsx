@@ -1,7 +1,7 @@
 import './global.css'
+import { ReactNode } from 'react'
 import { Inter } from 'next/font/google'
 import PokeHeader from '../components/PokeHeader'
-import { ReactNode } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,6 +15,7 @@ export default function RootLayout({
 }: {
   children: ReactNode
 }) {
+
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
