@@ -8,10 +8,10 @@ export default function PokeHeader() {
       <nav>
         <ul className="flex text-zinc-300 gap-3">
           <li className="hover:text-zinc-100">
-            <Link href={"/"}>Início</Link>
+            <Link href={"/"}>Página Inicial</Link>
           </li>
           <li className="hover:text-zinc-100">
-            <Link href={"/list"}>Poke-Lista</Link>
+            <Link href={"/list"}>Pokédex</Link>
           </li>
         </ul>
       </nav>

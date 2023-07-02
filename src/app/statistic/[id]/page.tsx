@@ -4,20 +4,21 @@ import PokeCard from "@/components/PokeCard";
 import { useEffect, useState } from "react";
 import { api } from "@/services/axios-config";
 import { usePathname } from "next/navigation";
-import pokeAsh from "@/assets/poke-ash.png"
+import LoadingCard from "@/components/LoadingCard";
+import { PokemonType } from "@/app/types/PokemonProps";
 
 export default function PokeById() {
   const pathname = usePathname()
   const pokePath = pathname.split("/")[2]
-  // console.log("=====", pokePath,);
   const [pokeImage, setPokeImage] = useState<string>();
   const [pokeName, setPokeName] = useState<string>();
   const [pokeNumber, setPokeNumber] = useState<number>();
-  const [pokeType, setPokeType] = useState<[]>([]);
+  const [pokeType, setPokeType] = useState<PokemonType[]>([]);
   const [key, setKey] = useState<string>();
 
 
-  // console.log("pokeById", pokeById);
+  // console.log("=====", pokePath,);
+  // console.log("pokeType", pokeType);
   async function getPokemonById() {
     try {
       // Using axios with your API
@@ -25,7 +26,7 @@ export default function PokeById() {
       setPokeImage(response.data.sprites.front_shiny);
       setPokeName(response.data.name);
       setPokeNumber(response.data.id);
-      setPokeType(response.data);
+      setPokeType(response.data.types);
       setKey(response.data.id);
     } catch (error) {
       console.error(error);
@@ -34,6 +35,7 @@ export default function PokeById() {
 
   useEffect(() => {
     getPokemonById()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pokePath]);
 
   return (
@@ -49,14 +51,7 @@ export default function PokeById() {
         />
         :
         <div className="animate-pulse">
-
-          <PokeCard
-            pokeImage={pokeAsh}
-            pokeName={"Ash"}
-            pokeNumber={0}
-            pokeType={pokeType}
-            key={key}
-          />
+          <LoadingCard />
         </div>}
     </div >
 

@@ -2,6 +2,15 @@ import { ICardProps } from "@/app/types/PokemonProps";
 import Image from "next/image";
 import Link from "next/link";
 
+/**
+ * 
+ * @param pokeName é o nome do pokemon
+ * @param pokeImage é imagem do pokemon
+ * @param pokeNumber é o número do pokemon
+ * @param pokeType é o tipo do pokemon
+ * @param pokeType é o tipo do pokemon
+ * @returns 
+ */
 export default function PokeCard({
   pokeName,
   pokeImage,
@@ -37,7 +46,7 @@ export default function PokeCard({
         </div>
         <div>
           {pokeType ?
-            <h2>Tipo: {typeChecker()}</h2>
+            <h4>Tipo: {typeChecker()}</h4>
             : <h3>Tipo não encontrado</h3>}
         </div>
       </Link>

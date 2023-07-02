@@ -15,13 +15,9 @@
 
 export interface ICardProps {
   pokeName: string;
-  pokeImage: string | File;
+  pokeImage: string;
   pokeNumber: number;
-  pokeType: [{
-    type: {
-      name: string
-    }
-  }]
+  pokeType: PokemonType[]
 }
 
 export interface PokemonProps {
