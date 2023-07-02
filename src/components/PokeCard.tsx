@@ -18,11 +18,22 @@ export default function PokeCard({
   pokeNumber,
   pokeType
 }: ICardProps) {
+
+
+  console.log(pokeType.types);
+
+  function typeChecker(types: Array<[]>) {
+    if (types[1]) {
+      return `${types[0].type.name} | ${types[1].type.name}`
+    }
+    return pokeType[0]?.type.name
+  }
+
   return (
-    <div className=" rounded-lg bg-zinc-200 w-36 p-4 flex flex-col text-center items-center justify-center">
+    <div className=" rounded-lg bg-zinc-200 min-h-[228px] w-44 p-4 flex flex-col text-center items-center justify-center">
       <Link href={`/statistic/${pokeName}`}>
 
-        <div>
+        <div className="flex flex-col items-center justify-center">
           <h2>{pokeName}</h2>
           <Image
             width={100}
@@ -36,7 +47,7 @@ export default function PokeCard({
         </div>
         <div>
           {pokeType ?
-            <h2>{pokeType[0]?.type.name}</h2>
+            <h2>Tipo: {typeChecker(pokeType)}</h2>
             : <h3>Tipo não encontrado</h3>}
         </div>
       </Link>
