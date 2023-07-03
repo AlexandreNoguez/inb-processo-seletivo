@@ -4,7 +4,7 @@ import { PokemonProps } from "@/app/types/PokemonProps";
 
 const getAllPokemons = async (setPokemons: { (value: SetStateAction<PokemonProps[]>): void; (arg0: (prevData: any) => any[]): void; }) => {
   let endPoints = [];
-  for (let i = 1; endPoints.length < 50; i++) {
+  for (let i = 1; endPoints.length < 350; i++) {
     endPoints.push(`/pokemon/${i}`)
   }
 

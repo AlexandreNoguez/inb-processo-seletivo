@@ -29,12 +29,12 @@ export default function PokeById() {
       setPokeNumber(response.data.id);
       setPokeType(response.data.types);
       setKey(response.data.id);
-      console.log("response", response.data.stats);
+
 
       let statsArray: [] = [];
       await response.data.stats.forEach((item: { base_stat: number; stat: { name: string; }; }) => {
 
-        const statObj = {
+        const statObj: any = {
           data: [
             { x: item.base_stat },
             { y: item.stat.name }
@@ -44,12 +44,9 @@ export default function PokeById() {
         setStats(prevData => [...prevData, statObj])
       })
 
-      // let convertedData = statsArray.flatMap(item => item.data);
-
-      await response.data.abilities.forEach((getAbility) => {
+      await response.data.abilities.forEach((getAbility: { ability: { name: string } }) => {
         setAbilities(prevData => [...prevData, getAbility.ability.name])
       })
-      // return setAbilities(getAbilities)
 
     } catch (error) {
       console.error(error);
@@ -74,36 +71,20 @@ export default function PokeById() {
             key={key}
           />
           {/* INICIOS DAS HABILIDADES E STATS */}
-          <div className="flex justify-center items-center gap-2">
+          <div className="flex gap-2 sm:flex-wrap">
             {/* HABILIDADES */}
-            <div className="border-slate-900 border-2 rounded-lg bg-zinc-200 min-h-[200px] w-full flex flex-col text-left items-center justify-center">
-
-              <h1>Habilidades</h1>
-              <div className="flex flex-col">
-                <div className="flex flex-col text-left">
-
-                  <span>{`${abilities[0] ?? ""}`}</span>
-                  <span>{`${abilities[1] ?? ""}`}</span>
-                  <span>{`${abilities[2] ?? ""}`}</span>
-                </div>
-                {/* <Image
-                    width={100}
-                    height={100}
-                    src={pokeImage}
-                    alt={`imagem do pokemon ${pokeName}`} /> */}
+            <div className="border-slate-900 border-2 rounded-lg bg-zinc-200 h-[270px] w-80 text-center items-center justify-center">
+              <div className="mt-4">
+                <h1>Habilidades</h1>
               </div>
-
-
-              <div>
-                {/* {pokeType ?
-                  <h4>Tipo: {typeChecker()}</h4>
-                  : <h3>Tipo não encontrado</h3>} */}
+              <div className="flex flex-col justify-center items-center text-left mt-8">
+                {abilities.map((ability, index) => (
+                  <span key={index}>{ability}</span>
+                ))}
               </div>
-              {/* </Link> */}
-
             </div >
             {/* STATS */}
-            <div className="border-slate-900 border-2 rounded-lg bg-zinc-200 min-h-[200px] w-full flex flex-col text-center items-center justify-center">
+            <div className="border-slate-900 border-2 rounded-lg bg-zinc-200 h-[270px] w-80 flex flex-col text-center items-center justify-center">
               <PokeCharts stats={stats} />
             </div >
           </div>

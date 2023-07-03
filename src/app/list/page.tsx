@@ -39,10 +39,10 @@ export default function PokeList() {
         {(pokemons.length) ?
           pokemons.filter(filtered => {
             return pokeSearch?.toLowerCase() === ''
-              ? filtered
+              ? filtered.id
               : filtered.name.toLowerCase().includes(pokeSearch.toLowerCase())
           }).map((pokemon, index) => (
-            <div className="hover:-translate-y-1 hover:bg-zinc-100" key={index}>
+            <div className="hover:-translate-y-1 hover:bg-transparent" key={index}>
               <PokeCard
                 pokeName={pokemon.name}
                 pokeImage={pokemon.sprites.front_shiny}

@@ -3,14 +3,13 @@
 import ReactApexChart from "react-apexcharts";
 
 /**
- * 
  * @param param0 
  * @returns 
  */
 export default function PokeCharts({ stats }: any) {
 
   var convertedArray = [{
-    data: stats.map(function (obj) {
+    data: stats.map(function (obj: { data: any }) {
       var dataObj = obj.data[0];
       var dataObj1 = obj.data[1];
       return { x: dataObj1.y, y: dataObj.x };
@@ -41,8 +40,6 @@ export default function PokeCharts({ stats }: any) {
     }
   }
 
-  console.log(convertedArray);
-
   return (
 
     <div id="chart">
@@ -50,8 +47,8 @@ export default function PokeCharts({ stats }: any) {
         options={options}
         series={convertedArray}
         type="radar"
-        height={300}
-        width={400}
+        height={250}
+        width={300}
       />
     </div>
   )
