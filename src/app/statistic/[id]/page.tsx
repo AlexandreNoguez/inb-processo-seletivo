@@ -17,7 +17,7 @@ export default function PokeById() {
   const [pokeNumber, setPokeNumber] = useState<number>();
   const [pokeType, setPokeType] = useState<PokemonType[]>([]);
   const [abilities, setAbilities] = useState<Array<[]>>([]);
-  const [stats, setStats] = useState<Array<[]>>([]);
+  const [stats, setStats] = useState<Array<{ x: number; y: string }>>([]);
 
   // console.log("stats", stats);
   // console.log("pokeType", pokeType);
@@ -52,6 +52,38 @@ export default function PokeById() {
       console.error(error);
     }
   }
+
+  // async function getPokemonById() {
+  //   try {
+  //     const response = await api.get(`/pokemon/${pokePath}`);
+  //     setPokeImage(response.data.sprites.front_shiny);
+  //     setPokeName(response.data.name);
+  //     setPokeNumber(response.data.id);
+  //     setPokeType(response.data.types);
+  //     setKey(response.data.id);
+
+
+  //     let statsArray: [] = [];
+  //     await response.data.stats.forEach((item: { base_stat: number; stat: { name: string; }; }) => {
+
+  //       const statObj = {
+  //         data: [
+  //           { x: item.base_stat },
+  //           { y: item.stat.name }
+  //         ],
+  //       }
+  //       statsArray.push(statObj);
+  //       setStats(prevData => [...prevData, statObj])
+  //     })
+
+  //     await response.data.abilities.forEach((getAbility: { ability: { name: string } }) => {
+  //       setAbilities(prevData => [...prevData, getAbility.ability.name])
+  //     })
+
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
   useEffect(() => {
     getPokemonById()
