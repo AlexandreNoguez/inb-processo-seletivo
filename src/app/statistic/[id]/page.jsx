@@ -11,13 +11,13 @@ import PokeCharts from "@/components/PokeCharts";
 export default function PokeById() {
   const pathname = usePathname()
   const pokePath = pathname.split("/")[2]
-  const [key, setKey] = useState<string>();
-  const [pokeImage, setPokeImage] = useState<string>();
-  const [pokeName, setPokeName] = useState<string>();
-  const [pokeNumber, setPokeNumber] = useState<number>();
-  const [pokeType, setPokeType] = useState<PokemonType[]>([]);
-  const [abilities, setAbilities] = useState<Array<[]>>([]);
-  const [stats, setStats] = useState<Array<{ x: number; y: string }>>([]);
+  const [key, setKey] = useState();
+  const [pokeImage, setPokeImage] = useState();
+  const [pokeName, setPokeName] = useState();
+  const [pokeNumber, setPokeNumber] = useState();
+  const [pokeType, setPokeType] = useState([]);
+  const [abilities, setAbilities] = useState([]);
+  const [stats, setStats] = useState([]);
 
   // console.log("stats", stats);
   // console.log("pokeType", pokeType);
@@ -31,8 +31,8 @@ export default function PokeById() {
       setKey(response.data.id);
 
 
-      let statsArray: [] = [];
-      await response.data.stats.forEach((item: { base_stat: number; stat: { name: string; }; }) => {
+      let statsArray = [];
+      await response.data.stats.forEach((item) => {
 
         const statObj = {
           data: [
@@ -44,7 +44,7 @@ export default function PokeById() {
         setStats(prevData => [...prevData, statObj])
       })
 
-      await response.data.abilities.forEach((getAbility: { ability: { name: string } }) => {
+      await response.data.abilities.forEach((getAbility) => {
         setAbilities(prevData => [...prevData, getAbility.ability.name])
       })
 
