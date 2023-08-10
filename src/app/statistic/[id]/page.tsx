@@ -34,7 +34,7 @@ export default function PokeById() {
       let statsArray: [] = [];
       await response.data.stats.forEach((item: { base_stat: number; stat: { name: string; }; }) => {
 
-        const statObj: any = {
+        const statObj = {
           data: [
             { x: item.base_stat },
             { y: item.stat.name }
